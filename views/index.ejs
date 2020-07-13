@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>Activity Monitor</title>
+    </head>
+
+    <body>
+        <form action="/log" method="POST">
+            <input type="text" placeholder="Activity Name" name="name">
+            <input type="text" placeholder="Activity Type" name="type">
+            <button type="submit">Submit</button>
+        </form>
+
+        <h2>Activities <%= activity.length %></h2>
+        <ul class="activities">
+            <% for(let i=0; i < activity.length; i++) {%>
+                <li class="activity">
+                    <span><%= activity[i].name %></span>
+                    <span><%= activity[i].type %></span>
+                </li>
+            <% } %>
+        </ul>
+    </body>
+</html>
