@@ -1,23 +1,52 @@
 <html>
     <head>
         <title>Activity Monitor</title>
+        <style>
+            table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+            }
+            
+            td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+            }
+            
+            tr:nth-child(even) {
+            background-color: #dddddd;
+            }
+        </style>
     </head>
-
     <body>
         <form action="/log" method="POST">
             <input type="text" placeholder="Activity Name" name="name">
-            <input type="text" placeholder="Activity Type" name="type">
+            <input type="text" placeholder="Description" name="description">
+            <input type="date" placeholder="Date" name="date">
+            <input type="time" placeholder="Start Time" name="time">
+            <input type="number" placeholder="Duration in minutes" name="duration">
             <button type="submit">Submit</button>
         </form>
 
-        <h2>Activities <%= activity.length %></h2>
-        <ul class="activities">
-            <% for(let i=0; i < activity.length; i++) {%>
-                <li class="activity">
-                    <span><%= activity[i].name %></span>
-                    <span><%= activity[i].type %></span>
-                </li>
+        <h2>Activities</h2>
+        <table>
+            <tr>
+                <th>Activity Name</th>
+                <th>Description</th>
+                <th>Date</th>
+                <th>Start Time</th>
+                <th>Duration (minutes)</th>
+            </tr>
+            <% for(let i=0; i < activity.length; i++) { %>
+                <tr>
+                    <td><%= activity[i].name %></td>
+                    <td><%= activity[i].description %></td>
+                    <td><%= activity[i].date %></td>
+                    <td><%= activity[i].time %></td>
+                    <td><%= activity[i].duration %></td>
+                </tr>
             <% } %>
-        </ul>
+            </table>
     </body>
 </html>
